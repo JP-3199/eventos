@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tareas </title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>Tareas por hacer</h1>
+ 
+      <!-- Contador de tareas -->
+      <section class="contador" aria-live="polite">
+        <p class="contador__item">Total de tareas: <strong id="total">0</strong></p>
+        <p class="contador__item">Completadas: <strong id="completadas">0</strong></p>
+        <p class="contador__item">Pendientes: <strong id="pendientes">0</strong></p>
+      </section>
+ 
+      <!-- Barra de progreso -->
+      <div class="progreso" role="progressbar" aria-label="Progreso de tareas"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra">
+        <div class="progreso__relleno" id="relleno"></div>
+      </div>
+      <p class="progreso__texto" id="porcentaje">0% completado</p>
+    </header>
+ 
+    <!-- Formulario para agregar tareas -->
+    <form class="formulario" id="formulario">
+      <label class="formulario__label" for="nuevaTarea">Nueva tarea</label>
+      <div class="formulario__fila">
+        <input class="formulario__input" type="text" id="nuevaTarea"
+               placeholder="Escribe una tarea..." autocomplete="off">
+        <button class="boton boton--agregar" type="submit">Agregar tarea</button>
+      </div>
+      <p class="formulario__error" id="error" role="alert"></p>
+    </form>
+ 
+    <!-- Lista de tareas -->
+    <ul class="lista" id="lista"></ul>
+    <p class="vacio" id="vacio">Aún no hay tareas. Agrega la primera.</p>
+  </main>
+ 
+</body>
+</html>
+ 

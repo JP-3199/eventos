@@ -1,0 +1,262 @@
+/* ===== Variables (paleta oscura) ===== */
+:root {
+  --fondo: #10131c;
+  --superficie: #000000;
+  --borde: #2b3248;
+  --texto: #f5f7fb;
+  --texto-suave: #f0f1f5;
+  --acento: #920cf2;
+  --completada: #1d3a33;
+  --completada-borde: #2f6b5a;
+  --exito: #6fe0b4;
+  --peligro: #ff7b8a;
+  --radio: 8px;
+}
+ 
+/* ===== Base  ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+ 
+.app {
+  width: 100%;
+  padding: 1.25rem 1rem 2rem;
+}
+ 
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+ 
+/* ===== Contador ===== */
+.contador {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+ 
+.contador__item {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 0.6rem 0.9rem;
+  color: var(--texto-suave);
+}
+ 
+.contador__item strong {
+  color: var(--texto);
+  font-size: 1.1rem;
+}
+ 
+/* ===== Barra de progreso ===== */
+.progreso {
+  width: 100%;
+  height: 10px;
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  overflow: hidden;
+}
+ 
+.progreso__relleno {
+  height: 100%;
+  width: 0;
+  background-color: var(--exito);
+  transition: width 0.3s ease;
+}
+ 
+.progreso__texto {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+ 
+/* ===== Formulario ===== */
+.formulario {
+  margin: 1.5rem 0 1rem;
+}
+ 
+.formulario__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+ 
+.formulario__fila {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+ 
+.formulario__input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  font-size: 1rem;
+  color: var(--texto);
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+ 
+.formulario__input::placeholder {
+  color: var(--texto-suave);
+}
+ 
+.formulario__error {
+  min-height: 1.3rem;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--peligro);
+}
+ 
+/* ===== Botones ===== */
+.boton {
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radio);
+  cursor: pointer;
+  color: var(--texto);
+  background-color: var(--borde);
+}
+ 
+.boton--agregar {
+  background-color: var(--acento);
+  color: #10131c;
+  
+}
+ 
+.boton--completar {
+  background-color: green;
+  border-color: var(--exito);
+  color: var(--exito);
+  border-radius: 20px;
+}
+ 
+.boton--eliminar {
+  background-color: red;
+  border-color: var(--peligro);
+  color: var(--peligro);
+  border-radius: 20px;
+}
+ 
+.boton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+ 
+.boton:focus-visible,
+.formulario__input:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+}
+ 
+/* ===== Lista de tareas ===== */
+.lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+ 
+.tarea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0.9rem;
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+ 
+.tarea__texto {
+  word-break: break-word;
+}
+ 
+.tarea__acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+ 
+.tarea__acciones .boton {
+  flex: 1;
+}
+ 
+/* Tarea completada */
+.tarea--completada {
+  background-color: var(--completada);
+  border-color: var(--completada-borde);
+}
+ 
+.tarea--completada .tarea__texto {
+  text-decoration: line-through;
+  color: var(--texto-suave);
+}
+ 
+.vacio {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--texto-suave);
+}
+ 
+.vacio--oculto {
+  display: none;
+}
+ 
+/* ===== Responsivo ===== */
+@media (min-width: 600px) {
+  .app {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+ 
+  h1 {
+    font-size: 2rem;
+  }
+ 
+  .contador {
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  .contador__item {
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: center;
+  }
+ 
+  .formulario__fila {
+    flex-direction: row;
+  }
+ 
+  .tarea {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+ 
+  .tarea__texto {
+    flex: 1;
+  }
+ 
+  .tarea__acciones .boton {
+    flex: none;
+  }
+ 
+}
+ 
